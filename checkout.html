@@ -56,7 +56,7 @@ section{
 .navicon{
   font-size:30px;
   cursor:pointer;
-  margin-left: 40px;
+  margin-left: 10px;
   color: white;
 }
 img{
@@ -78,11 +78,8 @@ img{
     padding-left: 20px;
 
   }
-  h4 {
-    color: black;
+  h4{
     font-weight: bold;
-    font-size: 150%;
-    display: inline;
   }
 
 
@@ -104,16 +101,24 @@ img{
     margin-left: 10%;
     border: 2px solid black;
     border-radius: 8px;
+    padding: 10px;
   }
   .searchbutton{
     height: 50px;
+    width: 50px;
     background-color: deepskyblue;
     border-radius: 8px;
     margin-left:-6px;
   }
+  .cartbutton{
+    width: 50px;
+    border-radius: 8px;
+    margin-left:30px;
+  }
   .backgroundcolor{
     background-color: black;
-    padding: 4px;
+    margin-top: -23px;
+    padding: 5px;
   }
   .help{
     color: deepskyblue;
@@ -142,7 +147,7 @@ ul{
 list-style-type: none;
 padding: 0px 10px;
 display: flex;
-justify-content: space-evenly;
+justify-content: space-around;
  position: sticky;
  top: 0;
  margin-top: 12px;
@@ -156,7 +161,7 @@ display: flex;
 justify-content: space-around;
   }
 .footer {
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -173,24 +178,35 @@ justify-content: space-around;
 
 
 
-
-
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
 
 
+@media screen and (max-width: 970px) {
+ .cartbutton{
+    margin-left: 0px;
+    border-radius: 8px;
+  } 
+  .help{
+    color: deepskyblue;
+    font-size: 120%;
+    margin-left: 0px;
+    cursor: pointer;
+  }
+}
 
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 640px) {
   input.search{
-    width: 40%;
+    width: 35%;
     height: 40px;
-    margin-left: 2%;
+    margin-left: 1%;
   }
   .searchbutton{
     height: 40px;
+    width: 40px;
     background-color: deepskyblue;
     border-radius: 8px;
     margin-left:-6px;
@@ -198,7 +214,19 @@ justify-content: space-around;
   .help{
     display: none;
   }
-
+  .cartbutton{
+    display: inline;
+    margin-left: 3px;
+    border-radius: 8px;
+    width: 20px;
+  } 
+  
+  .navicon{
+  font-size:25px;
+  cursor:pointer;
+  margin-left: 0px;
+  color: white;
+}
 }
 </style>
 </head>
@@ -206,7 +234,7 @@ justify-content: space-around;
 <br>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <h3>Admin Dashboard</h3>
+  <h3>Dashboard</h3>
   <a href="home.html"><i class="side fa-solid fa-house"></i>Home</a>
   <a href="cartpage.html"><i class=" side fa-solid fa-cart-arrow-down "></i>Cart</a>
   <a href="checkout.html"><i class="side fas fa-credit-card"></i>CheckOut</a>
@@ -221,16 +249,17 @@ justify-content: space-around;
             <input class="search" type="search" placeholder="Search" aria-label="Search">
             <button class="searchbutton" type=""><i class="fa-solid fa-magnifying-glass"></i></button>
             <span class="help"><i class="fa-solid fa-circle-question"></i>Help</span>
+            <span class="cartbutton">
+            <a href="cartpage.html"><i class="active fa-solid fa-cart-arrow-down"></i></a>
+            </span>
           </span>
   </div>
 <section> <br> <br>
    
-<div>
-  <div>
   <ul>
-    <li><a href="cartpage.html"><i class="active fas fa-credit-card"></i></a></li>
+    <li><i class="active fas fa-credit-card"></i></li>
   </ul>
-  </div>
+  
   <h4>
   CheckOut
   </h4>
@@ -252,7 +281,7 @@ justify-content: space-around;
 </div>
 </section>
 
-<script>
+<script type="text/javascript" src="Yalhaji.js">
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
 }
