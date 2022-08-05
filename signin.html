@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- Design by foolishdeveloper.com -->
-    <title>Glassmorphism login Form Tutorial in html css</title>
+    <title>Yalhaji Sign in</title>
  
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -50,7 +50,7 @@ body{
     right: -30px;
     bottom: -80px;
 }
-form{
+.form{
     height: auto;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
@@ -64,14 +64,14 @@ form{
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
 }
-form *{
+.form{
     font-family: 'Poppins',sans-serif;
     color: #ffffff;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
 }
-form h3{
+ h3{
     font-size: 32px;
     font-weight: 500;
     line-height: 42px;
@@ -94,6 +94,9 @@ input{
     margin-top: 8px;
     font-size: 14px;
     font-weight: 300;
+    color: white;
+     outline: none;
+    border: none;
 }
 ::placeholder{
     color: #e5e5e5;
@@ -102,7 +105,7 @@ button{
     
     width: 100%;
     background-color: #ffffff;
-    color: #080710;
+    color: black;
     padding: 15px 0;
     font-size: 18px;
     font-weight: 600;
@@ -157,13 +160,19 @@ img{
     color: deepskyblue;
     margin-bottom: 20px;
   }
-  form h3{
+   h3{
     font-size: 150%;
     font-weight: 500;
     text-align: center;
     color: white;
     font-family: sans-serif;
 }
+#activate{
+font-weight: bold;
+    color: red;
+    font-size: 115%;
+  }
+
 
     </style>
 </head>
@@ -172,9 +181,9 @@ img{
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form>
-        <h1 class="center">
-    <img src="logo.png" alt="page logo">Yalhaji
+    <div class="form">
+        <h1 class="center color">
+            <img src="logo.png" alt="page logo">Yalhaji
         </h1>
         <h3>Sign In</h3>
 
@@ -182,14 +191,16 @@ img{
 
         <input type="password" placeholder="Password" id="pass"> <br> <br>
 
-        <button>Log In</button> <br> <br>
+        <button onclick="signin()">Sign In</button> <br> <br>
+        <div id="activate"></div>
         <div class="center"> 
-    <a class="signuplink" href="index.html">New Here? Sign up here</a>
-    </div>
+        <a class="signuplink" href="index.html">New Here? Sign up here</a>
+        </div>
         <div class="social">
           <div class="go"><i class="fab fa-google"></i>  Google</div>
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
         </div>
-    </form>
+    </div>
+    <script type="text/javascript" src="Yalhaji.js"></script>
 </body>
 </html>
