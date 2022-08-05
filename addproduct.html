@@ -56,7 +56,7 @@ section{
 .navicon{
   font-size:30px;
   cursor:pointer;
-  margin-left: 40px;
+  margin-left: 10px;
   color: white;
 }
 img{
@@ -98,16 +98,24 @@ img{
     margin-left: 10%;
     border: 2px solid black;
     border-radius: 8px;
+    padding: 10px;
   }
   .searchbutton{
     height: 50px;
+    width: 50px;
     background-color: deepskyblue;
     border-radius: 8px;
     margin-left:-6px;
   }
+  .cartbutton{
+    width: 50px;
+    border-radius: 8px;
+    margin-left:30px;
+  }
   .backgroundcolor{
     background-color: black;
-    padding: 4px;
+    margin-top: -23px;
+    padding: 5px;
   }
   .help{
     color: deepskyblue;
@@ -131,16 +139,21 @@ i.active{
 i:hover{
   color: #f1f1f1;
 }
-ul{
+ ul{
   background-color: deepskyblue;
 list-style-type: none;
 padding: 0px 10px;
 display: flex;
-justify-content: space-evenly;
+justify-content: space-around;
  position: sticky;
  top: 0;
  margin-top: 12px;
  border-bottom: 1px solid black;
+  }
+  #success{
+    font-weight: bold;
+    color: red;
+    font-size: 115%;
   }
 
 
@@ -153,9 +166,19 @@ justify-content: space-evenly;
 }
 
 
-
-
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 970px) {
+ .cartbutton{
+    margin-left: 0px;
+    border-radius: 8px;
+  } 
+  .help{
+    color: deepskyblue;
+    font-size: 120%;
+    margin-left: 0px;
+    cursor: pointer;
+  }
+}
+@media screen and (max-width: 640px) {
   input.search{
     width: 40%;
     height: 40px;
@@ -163,6 +186,7 @@ justify-content: space-evenly;
   }
   .searchbutton{
     height: 40px;
+    width: 40px;
     background-color: deepskyblue;
     border-radius: 8px;
     margin-left:-6px;
@@ -170,11 +194,19 @@ justify-content: space-evenly;
   .help{
     display: none;
   }
-
+.cartbutton{
+    display: none;
+  }
+  .navicon{
+  font-size:30px;
+  cursor:pointer;
+  margin-left: 0px;
+  color: white;
+}
 }
 </style>
 </head>
-<body>
+<body onload="getpreviousproducts()">
 <br>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -193,44 +225,42 @@ justify-content: space-evenly;
             <input class="search" type="search" placeholder="Search" aria-label="Search">
             <button class="searchbutton" type=""><i class="fa-solid fa-magnifying-glass"></i></button>
             <span class="help"><i class="fa-solid fa-circle-question"></i>Help</span>
+            <span class="cartbutton">
+            <a href="#"><i class="active fa-solid fa-cart-arrow-down"></i></a>
+            </span>
           </span>
   </div>
 <section> <br> <br>
    
 <div>
-  <div>
+  
   <ul>
+    <span class="navicon" style="color: black; margin-top: 5px" onclick="openNav()">&#9776;</span>
     <li><a href="adminhomepage.html"><i class="navbar fa-solid fa-house"></i></a></li>
     <li><a href="addproduct.html"><i class="active fa-solid fa-circle-plus"></i></a></li>
     <li><a href="viewproduct.html"><i class="navbar fa-solid fa-binoculars"></i></a></li>
   </ul>
-  </div>
-  
+ 
   <h2>
   Add Products to Store
   </h2> <br>
     <div class="row">
       <div class="col-6 mx-auto shadow">
-        <input type="file" name="" placeholder="image" class="form-control" id="itemImage">
+        <input type="file" name="" placeholder="image" class="form-control" id="itemImag" onchange="encodeImageFileAsURL(this)">
         <input type="text" name="" placeholder="item name" class="form-control" id="itemNam">
         <input type="text" name="" placeholder="item price" class="form-control" id="itemPric">
-        <input type="number" name="" placeholder="quantity" class="form-control" id="qt">
-        <textarea type="text" name="" placeholder="Item details" class="form-control" id="itemDetails"></textarea>
-        <button class="btn btn-primary w-100 mainbackcolor" id="addBtn">Add</button>
+        <textarea type="text" name="" placeholder="Item details" class="form-control" id="itemDetail"></textarea>
+        <button class="btn btn-primary w-100 mainbackcolor" onclick="addBtn()">Add</button>
         <div id="success" class="success"></div>
       </div>
 
       <div>
     </div>
+    
 </section>
 
-<script>
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-}
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}
+<script type="text/javascript" src="Yalhaji.js">
+
 </script>
    
 </body>
