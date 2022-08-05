@@ -51,7 +51,7 @@ body{
     right: -30px;
     bottom: -80px;
 }
-form{
+.form{
     margin-top: 50px;
     height: auto;
     width: 40%;
@@ -66,14 +66,14 @@ form{
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
 }
-form *{
+.form {
     font-family: 'Poppins',sans-serif;
     color: #ffffff;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
 }
-form h3{
+.form h3{
     font-size: 150%;
     font-weight: 500;
     text-align: center;
@@ -98,6 +98,9 @@ input{
     margin-top: 8px;
     font-size: 14px;
     font-weight: 300;
+    color: white;
+    outline: none;
+    border: none;
 }
 ::placeholder{
     color: #e5e5e5;
@@ -169,10 +172,21 @@ img{
   a:hover{
     color: deepskyblue;
 }
+        .emailtext{
+            font-size: 100%;
+            font-weight: bold;
+            color: red;
+        }
+        .passwordtext{
+            font-size: 100%;
+            font-weight: bold;
+            color: red;
+        }
  
 
+
 @media screen and (max-width: 1150px) {
-    form{
+    .form{
     height: auto;
     margin-top: 50px;
     width: 75%;
@@ -192,14 +206,14 @@ img{
 
     </style>
 </head>
-<body> <br>
+<body onload="getpreviousvalues()"> <br>
     <div class="background">
         <div class="shape"></div>
         <div class="shape"></div> 
     </div>
    
     
-    <form>
+    <div class="form">
          <h1 class="center">
     <img src="logo.png" alt="page logo">Yalhaji
         </h1>
@@ -211,8 +225,10 @@ img{
         <input type="text" placeholder="Surname" id="snam"> <br>
 
         <input type="text" placeholder="Email" minlength="5" id="emai"> <br>
+        <div id="emailtext" class="emailtext"></div>
 
         <input type="password" type="password" placeholder="Password" id="pass"> <br>
+        <div id="passwordtext" class="passwordtext"></div>
         <div class="text">
         By clicking Sign Up, you agree to our Terms,Data Policy and Cookie Policy.You may receive SMS notifications from us and can opt out at any time.</div>
         <div id="intext" class="innertext"></div>
@@ -225,6 +241,7 @@ img{
           <div class="go"><i class="fab fa-google"></i>  Google</div>
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
         </div>
-    </form>
+    </div>
+    <script type="text/javascript" src="Yalhaji.js"></script>
 </body>
 </html>
