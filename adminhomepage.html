@@ -56,7 +56,7 @@ section{
 .navicon{
   font-size:30px;
   cursor:pointer;
-  margin-left: 40px;
+  margin-left: 10px;
   color: white;
 }
 img{
@@ -78,7 +78,11 @@ img{
     padding-left: 20px;
 
   }
-
+  h2{
+    font-size: 150%;
+    text-align: center;
+    font-weight: bold;
+  }
 
   #itemDetails{
     height: 90px;
@@ -98,16 +102,24 @@ img{
     margin-left: 10%;
     border: 2px solid black;
     border-radius: 8px;
+    padding: 10px;
   }
   .searchbutton{
     height: 50px;
+    width: 50px;
     background-color: deepskyblue;
     border-radius: 8px;
     margin-left:-6px;
   }
+  .cartbutton{
+    width: 50px;
+    border-radius: 8px;
+    margin-left:30px;
+  }
   .backgroundcolor{
     background-color: black;
-    padding: 4px;
+    margin-top: -23px;
+    padding: 5px;
   }
   .help{
     color: deepskyblue;
@@ -131,22 +143,43 @@ i.active{
 i:hover{
   color: #f1f1f1;
 }
-ul{
+ ul{
   background-color: deepskyblue;
 list-style-type: none;
 padding: 0px 10px;
 display: flex;
-justify-content: space-evenly;
+justify-content: space-around;
  position: sticky;
  top: 0;
  margin-top: 12px;
  border-bottom: 1px solid black;
   }
-  .display{
+  .foot{
+  background-color: black;
+list-style-type: none;
+padding: 10px 10px;
+display: flex;
+justify-content: space-around;
+  }
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+.silver{
+  color: silver;
+}
+.display{
     display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
+      flex-wrap:wrap;
       justify-content: space-around;
+      width: 100%;
   }
   .box{
         border: 3px solid deepskyblue;
@@ -165,6 +198,11 @@ justify-content: space-evenly;
     .inline{
     display: inline;
   }
+  .activate{
+font-weight: bold;
+    color: red;
+    font-size: 115%;
+  }
 
 
 
@@ -176,9 +214,19 @@ justify-content: space-evenly;
 }
 
 
-
-
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 970px) {
+ .cartbutton{
+    margin-left: 0px;
+    border-radius: 8px;
+  } 
+  .help{
+    color: deepskyblue;
+    font-size: 120%;
+    margin-left: 0px;
+    cursor: pointer;
+  }
+}
+@media screen and (max-width: 640px) {
   input.search{
     width: 40%;
     height: 40px;
@@ -186,6 +234,7 @@ justify-content: space-evenly;
   }
   .searchbutton{
     height: 40px;
+    width: 40px;
     background-color: deepskyblue;
     border-radius: 8px;
     margin-left:-6px;
@@ -193,20 +242,35 @@ justify-content: space-evenly;
   .help{
     display: none;
   }
-  .box{
+.cartbutton{
+    display: none;
+  }
+  .navicon{
+  font-size:30px;
+  cursor:pointer;
+  margin-left: 0px;
+  color: white;
+}
+.display{
+    display: flex;
+      flex-direction: row;
+      flex-wrap:wrap;
+      justify-content: space-around;
+  }
+.box{
         border: 3px solid deepskyblue;
-         width: 40%;
+         width: 35%;
         height: 220px;
         margin: 5px;
-        padding: 10px;
-        font-size: 140%;
+        padding: 5px;
+        font-size: 120%;
         font-weight: bold;
         font-family: monospace;
-
+  }
 }
 </style>
 </head>
-<body>
+<body onload="adminboard()">
 <br>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -225,20 +289,24 @@ justify-content: space-evenly;
             <input class="search" type="search" placeholder="Search" aria-label="Search">
             <button class="searchbutton" type=""><i class="fa-solid fa-magnifying-glass"></i></button>
             <span class="help"><i class="fa-solid fa-circle-question"></i>Help</span>
+            <span class="cartbutton">
+            <a href="#"><i class="active fa-solid fa-cart-arrow-down"></i></a>
+            </span>
           </span>
   </div>
 <section> <br> <br>
    
 <div>
-  <div>
+  
   <ul>
+    <span class="navicon" style="color: black; margin-top: 5px" onclick="openNav()">&#9776;</span>
     <li><a href="adminhomepage.html"><i class="active fa-solid fa-house"></i></a></li>
     <li><a href="addproduct.html"><i class="navbar fa-solid fa-circle-plus"></i></a></li>
     <li><a href="viewproduct.html"><i class="navbar fa-solid fa-binoculars"></i></a></li>
   </ul>
-  </div>
     
-<h2>Admin's Dashboard</h2>
+<h2>Admin Dashboard </h2>
+<div id="activate"></div>
 <div class="display">
   <div class="box">
     <label>Admin Id</label> <br> <br>
@@ -258,15 +326,11 @@ justify-content: space-evenly;
   <div class="box">
     <label></label>
   <p class="line"></p>
-  </div>
-  
-
-
-
-</div>
+  </div> 
+</div> <br>
 </section>
 
-<script>
+<script type="text/javascript" src="Yalhaji.js">
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
 }
