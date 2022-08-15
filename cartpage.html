@@ -201,8 +201,21 @@ justify-content: space-around;
         
 .img {
     width: 100%;
-    height: 120px;
+    height: 140px;
     border-radius: 10px;
+ }
+ #totalPrice{
+  font-weight: bold;
+  font-size: 110%;
+  text-decoration: underline;
+ }
+ #checkout{
+  font-size: 105%;
+  font-weight: bold;
+ }
+ #cartNo{
+  color: red;
+  font-size: 160%;
  }
 
 
@@ -241,10 +254,6 @@ justify-content: space-around;
  font-size: 80%;
  font-weight: bolder;
 }
-.img {
- width: 100%;
- height: 120px;
-  }
  }
 
 
@@ -312,7 +321,10 @@ justify-content: space-around;
   <ul>
     <span class="navicon" style="color: black; margin-top: 5px" onclick="openNav()">&#9776;</span>
     <li><a href="home.html"><i class="navbar fa-solid fa-house"></i></a></li>
-    <li><a href="cartpage.html"><i class="active fa-solid fa-cart-arrow-down"></i></a></li>
+    <li><a href="cartpage.html"><i class="active fa-solid fa-cart-arrow-down"></i></a> 
+    <span id="cartNo"></span> </li>
+  
+
   </ul>
   <div id="deleteSuccess"></div>
   <h4>
@@ -320,11 +332,17 @@ justify-content: space-around;
   </h4>
     
     <div style="background: deepskyblue;">. </div>
-    <div id="disp"></div>
+    <div id="disp"></div><br><br>
+    <div id ='totalPrice'>
+      Total Price:
+    </div>
+    <div id="checkout"></div> <br>
+    <br><br>
 
     <div class="footer">
   <div class="foot">
     <li>
+        
        <h1>
     <img src="logo.png" alt="page logo">Yalhaji
      </h1>

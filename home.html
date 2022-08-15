@@ -207,7 +207,7 @@ justify-content: space-around;
         
 .img {
     width: 100%;
-    height: 120px;
+    height: 150px;
     border-radius: 10px;
  }
  .detailsbutton{
@@ -221,6 +221,10 @@ justify-content: space-around;
  }
  .automargin{
   margin: auto;
+ }
+ #cartNo{
+  color: red;
+  font-size: 160%;
  }
 
 
@@ -265,10 +269,7 @@ justify-content: space-around;
   .card:hover {
  background-color: silver;
  }
-.img {
- width: 100%;
- height: 120px;
-  }
+
  }
 
 @media screen and (max-width: 640px) {
@@ -334,7 +335,8 @@ justify-content: space-around;
   <ul>
     <span class="navicon" style="color: black; margin-top: 5px" onclick="openNav()">&#9776;</span>
     <li><a href="home.html"><i class="active fa-solid fa-house"></i></a></li>
-    <li><a href="cartpage.html"><i class="navbar fa-solid fa-cart-arrow-down"></i></a></li>
+    <li><a href="cartpage.html"><i class="navbar fa-solid fa-cart-arrow-down"></i></a> <span id="cartNo"></span></li>
+    
   </ul>
     <div id="success"></div>
   <h4>
@@ -344,7 +346,7 @@ justify-content: space-around;
     <div style="background: deepskyblue;">. </div>
     <div id="disp"></div>
 
-
+      <br><br><br><br><br>
     <div class="footer">
   <div class="foot">
     <li>
