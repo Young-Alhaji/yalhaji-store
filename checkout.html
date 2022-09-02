@@ -16,6 +16,19 @@
 body {
   font-family: sans-serif;
 }
+.receipt{
+  font-size: 120%;
+  font-weight: bold;
+}
+.tp{
+  margin-left: 150px;
+}
+#disp{
+  font-family: monospace;
+}
+#tot{
+  font-family: monospace;
+}
 section{
   text-align: center;
   margin-top: -60px;
@@ -81,6 +94,16 @@ img{
   h4{
     font-weight: bold;
   }
+  .p1{
+    font-size: 200%;
+    font-weight: bold;
+    color: deepskyblue;
+    font-family: sans-serif;
+  }
+  .p2{
+    font-size: 130%;
+    color: black;
+  }
 
 
   #itemDetails{
@@ -109,6 +132,7 @@ img{
     background-color: deepskyblue;
     border-radius: 8px;
     margin-left:-6px;
+    border: 1px solid deepskyblue;
   }
   .cartbutton{
     width: 50px;
@@ -173,7 +197,24 @@ justify-content: space-around;
 .silver{
   color: silver;
 }
-
+.border{
+  border: 3px solid black;
+  border-radius: 15px;
+}
+.bo{
+  border: 1px solid deepskyblue;
+  border-radius: 5px;
+  width: 95%;
+  margin: auto;
+  font-family: monospace;
+}
+.dottedline{
+  border-bottom: 1px dashed black;
+}
+.avatar{
+  font-size: 600%;
+  margin-left: 60px;
+}
 
 
 
@@ -228,13 +269,32 @@ justify-content: space-around;
   color: white;
 }
 }
+
+
+
+@media screen and (max-width: 500px) {
+  .cartbutton{
+    display: none;
+    margin-left: 3px;
+    border-radius: 8px;
+    width: 20px;
+  } 
+  .searchbutton{
+    height: 40px;
+    width: 50px;
+    border: 1px solid deepskyblue;
+    background-color: deepskyblue;
+    border-radius: 8px;
+    margin-left:-6px;
+  }
+  }
 </style>
 </head>
-<body>
+<body onload="checkoutPage()">
 <br>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <h3>Dashboard</h3>
+  <i class="avatar fa-solid fa-user"></i> <br /><br />
   <a href="home.html"><i class="side fa-solid fa-house"></i>Home</a>
   <a href="cartpage.html"><i class=" side fa-solid fa-cart-arrow-down "></i>Cart</a>
   <a href="checkout.html"><i class="side fas fa-credit-card"></i>CheckOut</a>
@@ -264,9 +324,41 @@ justify-content: space-around;
   CheckOut
   </h4>
     
-    <div style="background: deepskyblue;">. </div>
-    <div id="disp"></div>
+    <div style="background: deepskyblue;">. </div> <br>
+    <div class="bo">
+     <div class="receipt"> Receipt</div>
+    <div class="p1">
+    <img src="logo.png" alt="page logo">Yalhaji</div>
+    <div class="p2">TEL 07019486904</div>
+    <div class="dottedline"></div>
+    <div id="disp"></div> <br>
+    <div id="tot"></div> <br>
+     <div class="dottedline"></div> <br>
+    visit yalhaji.com and tell us all about your shoppping. <br>
+    Note: Items bought online are not returnable and Items will still remain in cart until order is delivered  <br><br>
+    <div class="dottedline"></div> <br> 
+    </div> <br>
+    <button class="btn btn-primary w-50 mainbackcolor" data-bs-toggle="modal" data-bs-target="#exampleModal">Print Receipt</button> <br><br>
+    <button class="btn btn-primary w-50 mainbackcolor" onclick="home()">HomePage</button> <br><br>
+    <button class="btn btn-primary w-50 mainbackcolor" onclick="out()">Log Out</button> <br> <br>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h7 class="modal-title" id="exampleModalLabel">Receipt</h7>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Receipt Printed successfully
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <div class="footer">
   <div class="foot">
@@ -281,6 +373,7 @@ justify-content: space-around;
 </div>
 </section>
 
+
 <script type="text/javascript" src="Yalhaji.js">
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
@@ -288,6 +381,7 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
+
 </script>
    
 </body>

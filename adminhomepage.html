@@ -16,6 +16,10 @@
 body {
   font-family: sans-serif;
 }
+.avatar{
+  font-size: 600%;
+  margin-left: 60px;
+}
 section{
   text-align: center;
   margin-top: -60px;
@@ -31,6 +35,10 @@ section{
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
+}
+label:hover{
+  color: black;
+  cursor: pointer;
 }
 
 .sidenav a {
@@ -140,6 +148,12 @@ i.active{
   color: #f1f1f1;
   margin-top: 8px;
 }
+i.bo{
+  font-size: 300%;
+}
+i.bo:hover{
+  color: black;
+}
 i:hover{
   color: #f1f1f1;
 }
@@ -190,6 +204,7 @@ justify-content: space-around;
         font-size: 160%;
         font-weight: bold;
         font-family: monospace;
+        border-radius: 15px;
   }
   .line{
     border-bottom: 2px solid black;
@@ -259,7 +274,7 @@ font-weight: bold;
   }
 .box{
         border: 3px solid deepskyblue;
-         width: 35%;
+         width: 40%;
         height: 220px;
         margin: 5px;
         padding: 5px;
@@ -274,9 +289,10 @@ font-weight: bold;
 <br>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <h3>Admin Dashboard</h3>
+  <i class="avatar fa-solid fa-user"></i> <br /><br />
+  <h3>Admin</h3>
   <a href="adminhomepage.html"><i class="side fa-solid fa-house"></i>Home</a>
-  <a href="addproduct.html"><i class=" side fa-solid fa-circle-plus "></i>Add products</a>
+  <a href="addproduct.html"><i class=" side fa-solid fa-circle-plus "></i>Add Products</a>
   <a href="viewproduct.html"><i class="side fa-solid fa-binoculars"></i>View Products</a>
   <a href="signin.html"><i class="side fa-solid fa-right-from-bracket"></i>Log Out</a>
 </div>
@@ -319,13 +335,17 @@ font-weight: bold;
     <p id="users"></p>
   </div>
   <div class="box">
-    <label>Most Products bought</label>
-    <p class="line"></p>
-    <p id=""></p>
+    <a href="addproduct.html">
+    <label>Add Products</label> <br><br><br>
+
+     <a href="addproduct.html"><i class=" bo fa-solid fa-circle-plus "></i></a>
+    </a>
   </div>
   <div class="box">
-    <label></label>
-  <p class="line"></p>
+    <a href="viewproduct.html">
+    <label>View Products</label> <br><br><br>
+    <a href="viewproduct.html"><i class="bo fa-solid fa-binoculars"></i></a>
+    </a>
   </div> 
 </div> <br>
 </section>

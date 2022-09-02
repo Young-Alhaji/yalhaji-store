@@ -16,6 +16,10 @@
 body {
   font-family: sans-serif;
 }
+.avatar{
+  font-size: 600%;
+  margin-left: 60px;
+}
 section{
   text-align: center;
   margin-top: -60px;
@@ -287,6 +291,24 @@ justify-content: space-around;
   color: white;
 }
 }
+
+
+@media screen and (max-width: 500px) {
+  .cartbutton{
+    display: none;
+    margin-left: 3px;
+    border-radius: 8px;
+    width: 20px;
+  } 
+  .searchbutton{
+    height: 40px;
+    width: 50px;
+    border: 1px solid deepskyblue;
+    background-color: deepskyblue;
+    border-radius: 8px;
+    margin-left:-6px;
+  }
+  }
 </style>
 </head>
 <body onload="cartpage()">
@@ -294,7 +316,7 @@ justify-content: space-around;
 <br>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <h3>Dashboard</h3>
+  <i class="avatar fa-solid fa-user"></i> <br /><br />
   <a href="home.html"><i class="side fa-solid fa-house"></i>Home</a>
   <a href="cartpage.html"><i class=" side fa-solid fa-cart-arrow-down "></i>Cart</a>
   <a href="checkout.html"><i class="side fas fa-credit-card"></i>CheckOut</a>
