@@ -60,10 +60,12 @@ function signin(){
 		 Email=emai.value
 		 Password=pass.value
 		var found =false
-		if(Email=='ayoola'&& Password=='demilade'){
+		if(Email=='young'&& Password=='alhaji'){
 			return location.assign("adminhomepage.html")
 		}
-		 allClients=JSON.parse(localStorage.allOfClients)
+		 if(localStorage.allOfClients){
+			 allClients=JSON.parse(localStorage.allOfClients)
+		}
 		 for (let i = 0; i<allClients.length ; i++) {
 		 	if(Email==allClients[i].email && Password==allClients[i].password){
 		 		localStorage.indexes=JSON.stringify(i)
@@ -81,7 +83,7 @@ function signin(){
 
 
 	function adminboard(){
-		activate.innerHTML=`<button class="btn btn-primary w-80 mainbackcolor" onclick="activateDashboard()">Activate Dashboard</button>`
+		activate.innerHTML=`<button class="btn btn-primary w-50 mainbackcolor" onclick="activateDashboard()">Activate Dashboard</button>`
 		if(localStorage.adminPage){
 			 admin=JSON.parse(localStorage.adminPage)
 			 activate.innerHTML=''
@@ -101,10 +103,6 @@ function signin(){
 		activate.innerHTML='Admin activated Successfully!'
 
 	}
-
-
-
-
 
 	let addedProducts=[]
  		 getpreviousproducts=()=>{
@@ -153,7 +151,7 @@ viewproducts=()=>{
 	allAddedItems.map((item,i)=>{
 			disp.innerHTML+=`<div class="display">
         <div class="card">
-            <img class="img" src=${allAddedItems[i].itemImage}>${allAddedItems[i].itemName} <br> $${allAddedItems[i].itemPrice}
+            <img class="img" src=${item.itemImage}>${item.itemName} <br> $${item.itemPrice}
             <button class="btn btn-primary w-100 mainbackcolor" onclick="deleteProduct(${i})">Delete</button>
         </div>
     </div> `
@@ -235,6 +233,7 @@ const addToCart=(cartindex)=>{
  	allAddedItems=JSON.parse(localStorage.adminPage).addedProducts
  	let filteredCarts =allAddedItems.find((item,ind)=>cartindex==ind)
  	filteredCarts.quantity=parseInt(1)
+ 	 filteredCarts.tprice=parseInt(filteredCarts.itemPrice*filteredCarts.quantity)
  	allCarts=filteredCarts
  	i=JSON.parse(localStorage.indexes)
 	allClients=JSON.parse(localStorage.allOfClients)
@@ -248,40 +247,69 @@ const addToCart=(cartindex)=>{
 	currentClientCarts.map((item,i)=>
 			cartNo.innerHTML= currentClientCarts.length)
 }
-
-
+let total=0
 cartpage=()=>{
-	let total=0;
+	disp.innerHTML = ""
 	i=JSON.parse(localStorage.indexes)
 	allClients=JSON.parse(localStorage.allOfClients)
 	currentClientCarts=JSON.parse(localStorage.allOfClients)[i].allCarts
+	priceOfCurrentCart=JSON.parse(localStorage.allOfClients)[i].priceOfCurrentCart
 	currentClientCarts.map((item,i)=>{
 			disp.innerHTML+=`<div class="display">
         <div class="card">
-            <img class="img" src=${currentClientCarts[i].itemImage}>${currentClientCarts[i].itemName} <br>
-             $${currentClientCarts[i].itemPrice}
-            <input type="number" name="" id="itemQuantit" placeholder="Quantity" value="1" style="width: 20%;
-             border:2px solid deepskyblue;" onkeypress="changeQuantity(${i})">
+            <img class="img" src=${item.itemImage}>${item.itemName} <br>
+             $${item.itemPrice}
+            <input type="number" name="" id="itemQuantit${i}" placeholder="Quantity" value=${currentClientCarts[i].quantity} style="width: 20%;
+             border:2px solid deepskyblue;" onchange="changeQuantity(${i})">
             <button class="btn btn-primary w-100 mainbackcolor" onclick="deleteCart(${i})">Remove</button>
         </div>
     </div> `
-    total += (currentClientCarts[i].itemPrice*currentClientCarts[i].quantity);
-    console.log()
+    currentClientCarts[i].tprice= (currentClientCarts[i].itemPrice*currentClientCarts[i].quantity)
+    	total+=(currentClientCarts[i].tprice)
     totalPrice.innerHTML=`Total Price = $${total} `
+    console.log(currentClientCarts)
+	console.log(currentClientCarts[i].tprice)
+	console.log(total)
 	})
 	if (currentClientCarts.length>0){
-		checkout.innerHTML= `<button class="btn btn-primary w-25 mainbackcolor" onclick="checkout(${i})">Checkout</button>`
+		checkout.innerHTML= `<button class="btn btn-primary w-50 mainbackcolor" onclick="checkoutGoods()">Checkout</button>`
 	}else{
 		checkout.innerHTML=`You Currently have no items in your Cart<br><br><br><br<br>
 							<button class="btn btn-primary w-50 mainbackcolor automargin" onclick="back()">
 							Back to Home</button><br>
 							<br><br<br><br><br<br><br><br<br><br><br`
 	}	
-	console.log(currentClientCarts)
 	currentClientCarts=JSON.parse(localStorage.allOfClients)[i].allCarts
 	currentClientCarts.map((item,i)=>
 			cartNo.innerHTML= currentClientCarts.length)
+	allClients[i].priceOfCurrentCart=total
+	localStorage.allOfClients=JSON.stringify(allClients)
+	console.log(allClients[i].priceOfCurrentCart)
+
+
 }
+
+
+const changeQuantity=(qtIndex)=>{
+	total = 0;
+	i=JSON.parse(localStorage.indexes)
+	allClients=JSON.parse(localStorage.allOfClients);
+	priceOfCurrentCart=JSON.parse(localStorage.allOfClients)[i].priceOfCurrentCart
+	currentClientCarts=JSON.parse(localStorage.allOfClients)[i].allCarts
+	let quantity = document.getElementById(`itemQuantit${qtIndex}`).value;
+	currentClientCarts[qtIndex].quantity=parseInt(quantity)
+	currentClientCarts[qtIndex].tprice = currentClientCarts[qtIndex].itemPrice * parseInt(quantity);
+	allClients[i].allCarts=currentClientCarts
+	localStorage.allOfClients=JSON.stringify(allClients);
+	currentClientCarts.map((each, i) => {
+		total+=(currentClientCarts[i].tprice)
+	})
+    totalPrice.innerHTML = `Total Price = $${total} `
+    allClients[i].priceOfCurrentCart=total
+	localStorage.allOfClients=JSON.stringify(allClients)
+	console.log(allClients[i].priceOfCurrentCart)
+}
+
 
 const deleteCart = (inde)=>{
 	currentClientCarts=JSON.parse(localStorage.allOfClients)[i].allCarts
@@ -294,4 +322,35 @@ const deleteCart = (inde)=>{
 }
 
 
+const checkoutGoods=()=>{
+location.assign('checkout.html')
+}
 
+
+const checkoutPage=()=>{
+	i=JSON.parse(localStorage.indexes)
+	allClients=JSON.parse(localStorage.allOfClients)
+	priceOfCurrentCart=JSON.parse(localStorage.allOfClients)[i].priceOfCurrentCart
+	currentClientCarts=JSON.parse(localStorage.allOfClients)[i].allCarts
+	currentClientCarts.map((item,i)=>{
+		disp.innerHTML+=`<div>
+        <div>
+            ${item.itemName} x${item.quantity}
+            <span class='tp'>
+             $${item.tprice}
+             </span>
+        </div>
+    </div> `
+	})
+	tot.innerHTML=`Total Payment= $${priceOfCurrentCart}`
+	console.log(currentClientCarts)
+}
+
+
+function home(){
+  location.assign('home.html')
+}
+
+const out=()=>{
+  location.assign('signin.html')
+}
