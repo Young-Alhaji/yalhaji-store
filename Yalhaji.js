@@ -55,6 +55,16 @@ localStorage.allOfClients=JSON.stringify (allClients)
 	}
 
 	
+function get(){
+	if(localStorage.adminPage){
+			 admin=JSON.parse(localStorage.adminPage)
+		}
+	let admin={
+			addedProducts:[],
+			orders:[]
+		}
+		localStorage.adminPage=JSON.stringify (admin)
+}
 
 function signin(){
 		 Email=emai.value
@@ -83,26 +93,18 @@ function signin(){
 
 
 	function adminboard(){
-		activate.innerHTML=`<button class="btn btn-primary w-50 mainbackcolor" onclick="activateDashboard()">Activate Dashboard</button>`
 		if(localStorage.adminPage){
 			 admin=JSON.parse(localStorage.adminPage)
-			 activate.innerHTML=''
 		}
+		if(localStorage.allOfClients){
 		allClients=JSON.parse(localStorage.allOfClients)
 		allClients.map((item,i)=>
 			users.innerHTML= allClients.length)
+	}else{
+		users.innerHTML=0
+	}
 	}
 
-		function activateDashboard(){
-		let admin={
-			addedProducts:[],
-			orders:[]
-		}
-		localStorage.adminPage=JSON.stringify (admin)
-		console.log(admin)
-		activate.innerHTML='Admin activated Successfully!'
-
-	}
 
 	let addedProducts=[]
  		 getpreviousproducts=()=>{

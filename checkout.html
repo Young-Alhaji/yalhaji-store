@@ -192,7 +192,6 @@ justify-content: space-around;
   background-color: black;
   color: white;
   text-align: center;
-  cursor: pointer;
 }
 .silver{
   color: silver;
@@ -301,7 +300,7 @@ justify-content: space-around;
   <a href="signin.html"><i   class="side fa-solid fa-right-from-bracket"></i>Log Out</a>
 </div>
 <div class="backgroundcolor">
-  <span class="navicon" onclick="openNav()">&#9776;</span>
+  <span class="navicon" onclick="openNav()"><i class="fa-solid fa-user"></i></span>
     <h1 >
     <img src="logo.png" alt="page logo">Yalhaji
      </h1>
@@ -338,27 +337,9 @@ justify-content: space-around;
     Note: Items bought online are not returnable and Items will still remain in cart until order is delivered  <br><br>
     <div class="dottedline"></div> <br> 
     </div> <br>
-    <button class="btn btn-primary w-50 mainbackcolor" data-bs-toggle="modal" data-bs-target="#exampleModal">Print Receipt</button> <br><br>
+    <button class="btn btn-primary w-50 mainbackcolor" onclick="window.print();return false;">Print Receipt</button> <br><br>
     <button class="btn btn-primary w-50 mainbackcolor" onclick="home()">HomePage</button> <br><br>
     <button class="btn btn-primary w-50 mainbackcolor" onclick="out()">Log Out</button> <br> <br>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h7 class="modal-title" id="exampleModalLabel">Receipt</h7>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Receipt Printed successfully
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
     <div class="footer">
   <div class="foot">
