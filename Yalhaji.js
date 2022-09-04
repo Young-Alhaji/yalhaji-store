@@ -42,7 +42,7 @@ let allClients=[]
   	
 }
 else if(passResult==false){
-		passwordtext.innerHTML=('(Password should have at least one Upper case,a Lower case and a number!)')
+		passwordtext.innerHTML=('(Password should have at least one Upper case,a Lower case and a number and contain 8 characters!)')
 		document.getElementById("pass").style.borderColor = "red";
 }
 else{
@@ -232,6 +232,12 @@ const back=()=>{
 }
 
 const addToCart=(cartindex)=>{
+	currentClientCarts=JSON.parse(localStorage.allOfClients)[i].allCarts
+	for (let i = 0; i<currentClientCarts.length ; i++) {
+		 	if(currentClientCarts[cartindex]==currentClientCarts[i]){
+		 		return success.innerHTML='Item already in Cart'
+		 	}
+		 }
  	allAddedItems=JSON.parse(localStorage.adminPage).addedProducts
  	let filteredCarts =allAddedItems.find((item,ind)=>cartindex==ind)
  	filteredCarts.quantity=parseInt(1)
@@ -261,7 +267,7 @@ cartpage=()=>{
         <div class="card">
             <img class="img" src=${item.itemImage}>${item.itemName} <br>
              $${item.itemPrice}
-            <input type="number" name="" id="itemQuantit${i}" placeholder="Quantity" value=${currentClientCarts[i].quantity} style="width: 20%;
+            <input type="number" name="" id="itemQuantit${i}" min="1" placeholder="Quantity" value=${currentClientCarts[i].quantity} style="width: 20%;
              border:2px solid deepskyblue;" onchange="changeQuantity(${i})">
             <button class="btn btn-primary w-100 mainbackcolor" onclick="deleteCart(${i})">Remove</button>
         </div>
@@ -299,6 +305,10 @@ const changeQuantity=(qtIndex)=>{
 	priceOfCurrentCart=JSON.parse(localStorage.allOfClients)[i].priceOfCurrentCart
 	currentClientCarts=JSON.parse(localStorage.allOfClients)[i].allCarts
 	let quantity = document.getElementById(`itemQuantit${qtIndex}`).value;
+	if(quantity<1){
+		alert(`please input a Valid quantity or you won't be allowed to continue`)
+		checkout.innerHTML=''
+	}else{
 	currentClientCarts[qtIndex].quantity=parseInt(quantity)
 	currentClientCarts[qtIndex].tprice = currentClientCarts[qtIndex].itemPrice * parseInt(quantity);
 	allClients[i].allCarts=currentClientCarts
@@ -307,8 +317,10 @@ const changeQuantity=(qtIndex)=>{
 		total+=(currentClientCarts[i].tprice)
 	})
     totalPrice.innerHTML = `Total Price = $${total} `
+    checkout.innerHTML= `<button class="btn btn-primary w-50 mainbackcolor" onclick="checkoutGoods()">Checkout</button>`
     allClients[i].priceOfCurrentCart=total
 	localStorage.allOfClients=JSON.stringify(allClients)
+	}
 	console.log(allClients[i].priceOfCurrentCart)
 }
 
@@ -345,6 +357,9 @@ const checkoutPage=()=>{
     </div> `
 	})
 	tot.innerHTML=`Total Payment= $${priceOfCurrentCart}`
+	allClients[i].allCarts=[]
+	localStorage.allOfClients=JSON.stringify(allClients)
+
 	console.log(currentClientCarts)
 }
 

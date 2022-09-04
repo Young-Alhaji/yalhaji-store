@@ -159,6 +159,9 @@ justify-content: space-around;
     color: red;
     font-size: 115%;
   }
+  input{
+    height: 70px;
+  }
 
 
 
@@ -250,11 +253,11 @@ justify-content: space-around;
   Add Products to Store
   </h2> <br>
     <div class="row">
-      <div class="col-6 mx-auto shadow">
-        <input type="file" name="" placeholder="image" class="form-control" id="itemImag" onchange="encodeImageFileAsURL(this)">
-        <input type="text" name="" placeholder="item name" class="form-control" id="itemNam">
-        <input type="text" name="" placeholder="item price" class="form-control" id="itemPric">
-        <textarea type="text" name="" placeholder="Item details" class="form-control" id="itemDetail"></textarea>
+      <div class="col-9 mx-auto shadow">
+        <input type="file" name="" placeholder="image" class="form-control my-4" id="itemImag" onchange="encodeImageFileAsURL(this)">
+        <input type="text" name="" placeholder="item name" class="form-control my-4" id="itemNam">
+        <input type="text" name="" placeholder="item price" class="form-control my-4" id="itemPric">
+        <textarea type="text" name="" placeholder="Item details" class="form-control my-4" id="itemDetail"></textarea>
         <button class="btn btn-primary w-100 mainbackcolor" onclick="addBtn()">Add</button>
         <div id="success" class="success"></div>
       </div>
