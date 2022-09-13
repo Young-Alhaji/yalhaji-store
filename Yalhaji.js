@@ -281,7 +281,7 @@ cartpage = () => {
             <img class="img" src=${item.itemImage}>${item.itemName} <br>
              $${item.itemPrice}
             <input type="number" name="" id="itemQuantit${i}" min="1" placeholder="Quantity" value=${currentClientCarts[i].quantity} style="width: 20%;
-             border:2px solid deepskyblue;" onchange="changeQuantity(${i})">
+             border:2px solid deepskyblue;" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >=48 && event.charCode <=57))" onchange="changeQuantity(${i})">
             <button class="btn btn-primary w-100 mainbackcolor" onclick="deleteCart(${i})">Remove</button>
         </div>
     </div> `;
@@ -320,10 +320,6 @@ const changeQuantity = (qtIndex) => {
     .priceOfCurrentCart;
   currentClientCarts = JSON.parse(localStorage.allOfClients)[i].allCarts;
   let quantity = document.getElementById(`itemQuantit${qtIndex}`).value;
-  if (quantity < 1) {
-    alert(`please input a Valid quantity or you won't be allowed to continue`);
-    checkout.innerHTML = "";
-  } else {
     currentClientCarts[qtIndex].quantity = parseInt(quantity);
     currentClientCarts[qtIndex].tprice =
       currentClientCarts[qtIndex].itemPrice * parseInt(quantity);
@@ -336,8 +332,6 @@ const changeQuantity = (qtIndex) => {
     checkout.innerHTML = `<button class="btn btn-primary w-50 mainbackcolor" onclick="checkoutGoods()">Checkout</button>`;
     allClients[i].priceOfCurrentCart = total;
     localStorage.allOfClients = JSON.stringify(allClients);
-  }
-  console.log(allClients[i].priceOfCurrentCart);
 };
 
 
